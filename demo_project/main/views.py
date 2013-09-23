@@ -23,5 +23,6 @@ def home(request):
             reverse_complement += BASE_PAIRING[base]
         context['query_string'] = query_string
         context['reverse_complement'] = reverse_complement
+        #Kai was here
 
     return render(request, 'home.html', context)
