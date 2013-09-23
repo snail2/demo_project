@@ -123,7 +123,7 @@ def home(request):
         #NEW
             context['reverse_complement'] = reverse_complement
         else:
-            context['reverse_complement'] = 'Error: Please only enter A, C, G, and T'
+            context['error_message'] = 'Error: Please only enter A, C, G, and T'
         #Kai was here
 
     return render(request, 'home.html', context)
