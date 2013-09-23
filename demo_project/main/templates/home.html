@@ -1,3 +1,10 @@
+<head>
+	<style type="text/css">
+ 	p1 {
+ 		color: red; }
+    </style>
+</head>
+
 <h1>Reverse Complementor</h1>
 
 <p>
@@ -12,4 +19,22 @@
   <p>
     <b>Reverse Complement</b>: {{reverse_complement}}
   </p>
+{% endif %}
+
+{% if RNA %}
+  <p>
+    <b>RNA</b>: {{RNA}}
+  </p>
+{% endif %}
+
+{% if amino_acids %}
+  <p>
+    <b>Amino Acid Sequence</b>: {{amino_acids}}
+  </p>
+{% endif %}
+
+{% if error_message %}
+  <p1>
+    <b>Error</b>: {{error_message}}
+  </p1>
 {% endif %}
