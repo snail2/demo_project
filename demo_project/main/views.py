@@ -135,7 +135,7 @@ def home(request):
             context['RNA'] = RNA
             if len(query_string) % 3 == 0: #Check if this works
                 for i in range (len(query_string)/3):
-                    amino_acids += CODONS[RNA[3*i,3*(i+1)]]
+                    amino_acids += CODONS[RNA[3*i:3*(i+1)]]
                 context['amino_acids'] = amino_acids
         else:
             context['error_message'] = 'Please only enter A, C, G, and T'
