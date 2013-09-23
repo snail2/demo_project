@@ -11,6 +11,13 @@ BASE_PAIRING = {
     'T': 'A',
 }
 
+RNA_BASE_PAIRING = {
+    'A': 'U',
+    'C': 'G',
+    'G': 'C',
+    'T': 'A',
+}
+
 #NEW
 CODONS = {
     'UUU' : 'Phe',
@@ -107,6 +114,8 @@ def home(request):
     if query_string:
         query_string = query_string.upper()
         reverse_complement = ''
+        amino_acids = ''
+        RNA = ''
         #NEW
         valid = True
         #NEW
@@ -117,13 +126,21 @@ def home(request):
                 break
             #NEW
             reverse_complement += BASE_PAIRING[base]
+            RNA += RNA_BASE_PAIRING[base]
         context['query_string'] = query_string
         #NEW
         if valid: #do the next lines; else display Error message
         #NEW
             context['reverse_complement'] = reverse_complement
+            context['RNA'] = RNA
+            if len(query_string) % 3 == 0: #Check if this works
+                for i in range (len(query_string)/3):
+                    amino_acids += CODONS[RNA[3*i,3*(i+1)]]
+                context['amino_acids'] = amino_acids
         else:
-            context['error_message'] = 'Error: Please only enter A, C, G, and T'
+            context['error_message'] = 'Please only enter A, C, G, and T'
         #Kai was here
+        
+   
 
     return render(request, 'home.html', context)
